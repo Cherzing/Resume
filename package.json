@@ -2,7 +2,7 @@
   "name": "Resume",
   "version": "1.0.0",
   "description": "Cherzing's personal resume website",
-  "main": "App.jsx",
+  "main": "src/main.jsx",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
