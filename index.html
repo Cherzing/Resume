@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>曹志 - AI应用开发 / AI产品经理</title>
+  <meta name="description" content="曹志的个人简历 - AI应用开发与AI产品经理，南京工业大学浦江学院" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    /* ================================================================
+       Design Tokens — Motion-Driven Portfolio
+       ================================================================ */
+    :root {
+      --teal: #0d9488;
+      --teal-dim: #0f766e;
+      --teal-glow: rgba(13,148,136,0.35);
+      --amber-accent: #d97706;
+      --amber-glow: rgba(217,119,6,0.3);
+      --amber: #f59e0b;
+      --sky: #38bdf8;
+      --emerald: #10b981;
+      --blue: #3b82f6;
+
+      --bg: #fafaf9;
+      --bg-card: rgba(255,255,255,0.75);
+      --bg-card-solid: #ffffff;
+      --bg-alt: #f5f5f4;
+      --bg-glass: rgba(255,255,255,0.6);
+      --text: #1c1917;
+      --text-sec: #57534e;
+      --text-muted: #a8a29e;
+      --border: rgba(0,0,0,0.08);
+      --border-solid: #e7e5e4;
+      --shadow: 0 4px 24px rgba(28,25,23,0.06);
+      --shadow-lg: 0 16px 48px rgba(28,25,23,0.08);
+      --shadow-xl: 0 32px 80px rgba(28,25,23,0.12);
+      --shadow-glow: 0 0 40px rgba(13,148,136,0.15);
+      --r: 20px;
+      --r-sm: 12px;
+      --r-xs: 8px;
+      --ease: cubic-bezier(.22,1,.36,1);
+      --ease-spring: cubic-bezier(.34,1.56,.64,1);
+      --font: 'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;
+      --font-mono: 'JetBrains Mono','Fira Code',monospace;
+      --nav-h: 72px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0a0b;
+      --bg-card: rgba(28,25,23,0.7);
+      --bg-card-solid: #1c1917;
+      --bg-alt: #111113;
+      --bg-glass: rgba(10,10,11,0.75);
+      --text: #fafaf9;
+      --text-sec: #a8a29e;
+      --text-muted: #78716c;
+      --border: rgba(255,255,255,0.08);
+      --border-solid: #292524;
+      --shadow: 0 4px 24px rgba(0,0,0,0.3);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.4);
+      --shadow-xl: 0 32px 80px rgba(0,0,0,0.5);
+      --shadow-glow: 0 0 60px rgba(13,148,136,0.2);
+    }
+
+    /* ================================================================
+       Reset & Base
+       ================================================================ */
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+    body{
+      font-family:var(--font);background:var(--bg);color:var(--text);
+      line-height:1.7;transition:background .6s var(--ease),color .6s var(--ease);
+      -webkit-font-smoothing:antialiased;overflow-x:hidden;
+      cursor:none;
+    }
+    @media(max-width:768px){body{cursor:auto}}
+    a{color:var(--teal);text-decoration:none;transition:color .3s var(--ease)}
+    a:hover{color:var(--teal-dim)}
+    ::selection{background:rgba(13,148,136,0.2);color:var(--text)}
+
+    /* ================================================================
+       Custom Cursor
+       ================================================================ */
+    .cursor-dot{
+      position:fixed;top:0;left:0;width:8px;height:8px;background:var(--teal);
+      border-radius:50%;pointer-events:none;z-index:9999;
+      transition:transform .15s var(--ease),opacity .15s;
+      transform:translate(-50%,-50%);
+      mix-blend-mode:difference;
+    }
+    .cursor-ring{
+      position:fixed;top:0;left:0;width:40px;height:40px;
+      border:2px solid rgba(13,148,136,0.4);border-radius:50%;
+      pointer-events:none;z-index:9998;
+      transition:transform .4s var(--ease),width .3s,height .3s,border-color .3s;
+      transform:translate(-50%,-50%);
+    }
+    .cursor-ring.hover{
+      width:60px;height:60px;border-color:var(--teal);
+      background:rgba(13,148,136,0.06);
+    }
+    @media(max-width:768px){.cursor-dot,.cursor-ring{display:none!important}}
+
+    /* ================================================================
+       Noise Texture Overlay
+       ================================================================ */
+    body::before{
+      content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+      z-index:9990;pointer-events:none;opacity:.025;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ================================================================
+       Aurora Canvas
+       ================================================================ */
+    #aurora{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.6}
+    [data-theme="light"] #aurora{opacity:.3}
+
+    /* ================================================================
+       Floating Particles
+       ================================================================ */
+    .particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+    .particle{
+      position:absolute;border-radius:50%;pointer-events:none;
+      animation:particleFloat linear infinite;
+    }
+    @keyframes particleFloat{
+      0%{transform:translateY(100vh) rotate(0deg);opacity:0}
+      10%{opacity:1}
+      90%{opacity:1}
+      100%{transform:translateY(-100px) rotate(720deg);opacity:0}
+    }
+
+    /* ================================================================
+       Navigation — Frosted Glass
+       ================================================================ */
+    .nav{
+      position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;
+      backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);
+      background:var(--bg-glass);border-bottom:1px solid var(--border);
+      transition:all .5s var(--ease);
+    }
+    .nav.scrolled{
+      box-shadow:var(--shadow);
+      background:var(--bg-glass);
+    }
+    .nav-in{max-width:1200px;margin:0 auto;padding:0 36px;height:100%;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{
+      font-weight:900;font-size:1.35rem;color:var(--text);letter-spacing:-.5px;
+      cursor:none;
+    }
+    .nav-links{display:flex;gap:4px;align-items:center}
+    .nav-links a{
+      color:var(--text-sec);font-size:.84rem;font-weight:500;
+      padding:8px 18px;border-radius:var(--r-sm);
+      transition:all .3s var(--ease);position:relative;cursor:none;
+    }
+    .nav-links a::after{
+      content:'';position:absolute;bottom:4px;left:50%;width:0;height:2px;
+      background:var(--teal);border-radius:1px;
+      transition:all .3s var(--ease);transform:translateX(-50%);
+    }
+    .nav-links a:hover,.nav-links a.active{color:var(--teal);background:rgba(13,148,136,0.06)}
+    .nav-links a:hover::after,.nav-links a.active::after{width:20px}
+    [data-theme="dark"] .nav-links a:hover,[data-theme="dark"] .nav-links a.active{background:rgba(13,148,136,0.1)}
+    .nav-act{display:flex;align-items:center;gap:10px}
+    .t-btn{
+      background:none;border:1px solid var(--border);color:var(--text-sec);
+      width:42px;height:42px;border-radius:var(--r-sm);cursor:none;
+      display:flex;align-items:center;justify-content:center;font-size:1rem;
+      transition:all .3s var(--ease);
+    }
+    .t-btn:hover{color:var(--teal);border-color:var(--teal);background:rgba(13,148,136,0.06);transform:rotate(15deg)}
+    .mob-btn{display:none;background:none;border:none;color:var(--text);font-size:1.3rem;cursor:none;padding:8px}
+
+    /* ================================================================
+       Hero — Cinematic Aurora
+       ================================================================ */
+    .hero{
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      padding:calc(var(--nav-h)+60px) 32px 80px;position:relative;overflow:hidden;
+      background:linear-gradient(160deg,#0a0a0b 0%,#111827 25%,#0a0a0b 50%,#0a0a0b 100%);
+    }
+    [data-theme="light"] .hero{
+      background:linear-gradient(160deg,#0f172a 0%,#1e293b 30%,#334155 60%,#0f172a 100%);
+    }
+    .hero::before{
+      content:'';position:absolute;width:900px;height:900px;top:-35%;right:-15%;
+      background:radial-gradient(circle,rgba(13,148,136,0.2) 0%,rgba(217,119,6,0.08) 40%,transparent 70%);
+      border-radius:50%;animation:hFloat 18s ease-in-out infinite;filter:blur(60px);
+    }
+    .hero::after{
+      content:'';position:absolute;width:700px;height:700px;bottom:-25%;left:-10%;
+      background:radial-gradient(circle,rgba(56,189,248,0.15) 0%,rgba(13,148,136,0.06) 40%,transparent 70%);
+      border-radius:50%;animation:hFloat 22s ease-in-out infinite reverse;filter:blur(60px);
+    }
+    @keyframes hFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-60px) scale(1.15)}}
+
+    /* Gradient mesh orbs */
+    .hero-orb{
+      position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;
+      animation:orbDrift 20s ease-in-out infinite;
+    }
+    .hero-orb-1{width:400px;height:400px;top:10%;left:5%;background:rgba(13,148,136,0.12);animation-delay:-5s}
+    .hero-orb-2{width:300px;height:300px;bottom:20%;right:10%;background:rgba(56,189,248,0.1);animation-delay:-10s}
+    @keyframes orbDrift{0%,100%{transform:translate(0,0)}33%{transform:translate(30px,-40px)}66%{transform:translate(-20px,30px)}}
+
+    .hero-inner{max-width:860px;text-align:center;position:relative;z-index:2}
+    .hero-pill{
+      display:inline-flex;align-items:center;gap:10px;
+      background:rgba(13,148,136,0.1);border:1px solid rgba(13,148,136,0.2);
+      color:#99f6e4;padding:10px 26px;border-radius:60px;
+      font-size:.84rem;font-weight:500;margin-bottom:36px;
+      backdrop-filter:blur(12px);
+      animation:fadeUp .8s var(--ease);
+    }
+    .hero-pill .live{
+      width:8px;height:8px;border-radius:50%;background:#34d399;
+      box-shadow:0 0 12px rgba(52,211,153,0.6);animation:livePulse 2s infinite;
+    }
+    @keyframes livePulse{0%,100%{opacity:1;box-shadow:0 0 12px rgba(52,211,153,0.6)}50%{opacity:.5;box-shadow:0 0 20px rgba(52,211,153,0.9)}}
+    .hero h1{
+      font-size:clamp(3rem,7.5vw,5rem);font-weight:900;letter-spacing:-3px;
+      line-height:1.05;color:#fff;margin-bottom:24px;
+      animation:fadeUp .8s var(--ease) .1s both;
+    }
+    .hero h1 .aurora{
+      background:linear-gradient(135deg,#14b8a6,#38bdf8,#fbbf24,#34d399);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;background-size:300% 300%;
+      animation:shimmer 5s ease-in-out infinite;
+    }
+    @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .hero-sub{
+      font-size:clamp(1rem,2.2vw,1.25rem);color:#a8a29e;font-weight:400;
+      margin-bottom:44px;animation:fadeUp .8s var(--ease) .2s both;
+    }
+    .hero-meta{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:32px;
+      margin-bottom:52px;animation:fadeUp .8s var(--ease) .3s both;
+    }
+    .hero-meta span{display:flex;align-items:center;gap:10px;color:#a8a29e;font-size:.88rem}
+    .hero-meta span i{color:#5eead4;font-size:.9rem;width:18px;text-align:center}
+    .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s var(--ease) .4s both}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:16px 36px;border-radius:var(--r);font-size:.94rem;font-weight:600;
+      cursor:none;border:none;transition:all .4s var(--ease);font-family:inherit;
+      position:relative;overflow:hidden;
+    }
+    .btn::after{
+      content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(255,255,255,0.1));
+      opacity:0;transition:opacity .3s;
+    }
+    .btn:hover::after{opacity:1}
+    .btn-fill{
+      background:linear-gradient(135deg,var(--teal),#14b8a6);color:#fff;
+      box-shadow:0 8px 32px var(--teal-glow);
+    }
+    .btn-fill:hover{transform:translateY(-4px);box-shadow:0 14px 44px rgba(13,148,136,0.5);color:#fff}
+    .btn-line{background:transparent;color:#99f6e4;border:1.5px solid rgba(153,246,228,0.25)}
+    .btn-line:hover{border-color:#5eead4;color:#fff;transform:translateY(-4px);background:rgba(13,148,136,0.06)}
+    .scroll-cue{
+      position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
+      color:#57534e;animation:bounce 2.5s infinite;
+    }
+    .scroll-cue i{font-size:1.2rem;opacity:.5}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(12px)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ================================================================
+       Sections — Shared
+       ================================================================ */
+    .sec{padding:120px 32px;position:relative;z-index:1}
+    .sec-alt{background:var(--bg-alt)}
+    .wrap{max-width:1140px;margin:0 auto}
+    .sec-head{text-align:center;margin-bottom:72px}
+    .sec-head .tag{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(13,148,136,0.07);color:var(--teal);
+      padding:8px 20px;border-radius:60px;font-size:.78rem;font-weight:600;
+      letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;
+      border:1px solid rgba(13,148,136,0.1);
+    }
+    [data-theme="dark"] .sec-head .tag{background:rgba(13,148,136,0.1);border-color:rgba(13,148,136,0.15)}
+    .sec-head h2{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;letter-spacing:-1.5px;margin-bottom:12px}
+    .sec-head p{color:var(--text-sec);font-size:1.05rem}
+    .sec-head .line{width:56px;height:3px;background:linear-gradient(90deg,var(--teal),var(--sky));border-radius:2px;margin:24px auto 0}
+
+    /* Reveal Animations */
+    .reveal{opacity:0;transform:translateY(40px);transition:all .8s var(--ease)}
+    .reveal.show{opacity:1;transform:translateY(0)}
+    .reveal-d1{transition-delay:.1s}
+    .reveal-d2{transition-delay:.2s}
+    .reveal-d3{transition-delay:.3s}
+    .reveal-d4{transition-delay:.4s}
+    .reveal-d5{transition-delay:.5s}
+    .reveal-d6{transition-delay:.6s}
+    .reveal-d7{transition-delay:.7s}
+
+    /* ================================================================
+       About
+       ================================================================ */
+    .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:start}
+    .about-text p{color:var(--text-sec);margin-bottom:18px;font-size:.97rem;line-height:1.95}
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .stat{
+      background:var(--bg-card);backdrop-filter:blur(16px);
+      border:1px solid var(--border);border-radius:var(--r);
+      padding:28px;text-align:center;
+      transition:all .4s var(--ease);position:relative;overflow:hidden;
+    }
+    .stat::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--teal),var(--amber-accent));
+      transform:scaleX(0);transition:transform .4s var(--ease);transform-origin:left;
+    }
+    .stat:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg),var(--shadow-glow)}
+    .stat:hover::before{transform:scaleX(1)}
+    .stat-n{
+      font-size:2.6rem;font-weight:900;
+      background:linear-gradient(135deg,var(--teal),var(--amber-accent));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;
+    }
+    .stat-l{font-size:.78rem;color:var(--text-muted);margin-top:8px;font-weight:500}
+
+    /* ================================================================
+       Education
+       ================================================================ */
+    .edu-card{
+      background:var(--bg-card);backdrop-filter:blur(16px);
+      border:1px solid var(--border);border-radius:var(--r);
+      padding:44px;display:flex;gap:32px;align-items:flex-start;
+      transition:all .4s var(--ease);position:relative;overflow:hidden;
+    }
+    .edu-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--sky))}
+    .edu-card:hover{box-shadow:var(--shadow-lg),var(--shadow-glow);transform:translateY(-5px)}
+    .edu-ic{
+      width:72px;height:72px;border-radius:20px;
+      background:linear-gradient(135deg,rgba(13,148,136,0.1),rgba(56,189,248,0.08));
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.6rem;color:var(--teal);flex-shrink:0;
+    }
+    [data-theme="dark"] .edu-ic{background:linear-gradient(135deg,rgba(13,148,136,0.15),rgba(56,189,248,0.1))}
+    .edu-body h3{font-size:1.3rem;font-weight:800;margin-bottom:6px}
+    .edu-body .mj{color:var(--teal);font-weight:600;font-size:.97rem}
+    .edu-body .tm{color:var(--text-muted);font-size:.84rem;margin-top:8px;display:flex;align-items:center;gap:8px}
+    .edu-body .crs{margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+    .edu-body .crs h4{font-size:.8rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px}
+    .crs-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .crs-t{
+      background:var(--bg-alt);color:var(--text-sec);
+      padding:6px 16px;border-radius:var(--r-xs);font-size:.8rem;font-weight:500;
+      transition:all .3s;border:1px solid transparent;
+    }
+    .crs-t:hover{border-color:var(--teal);color:var(--teal);background:rgba(13,148,136,0.04)}
+    .gpa-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(56,189,248,0.06));
+      border:1px solid rgba(16,185,129,0.15);color:var(--emerald);
+      padding:8px 20px;border-radius:var(--r-sm);font-size:.92rem;font-weight:700;margin-top:18px;
+    }
+    [data-theme="dark"] .gpa-badge{background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(56,189,248,0.06));border-color:rgba(16,185,129,0.2)}
+
+    /* ================================================================
+       Honors
+       ================================================================ */
+    .h-group{margin-bottom:44px}
+    .h-group:last-child{margin-bottom:0}
+    .h-group-hd{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .h-group-hd .hi{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .h-group-hd .hi.gold{background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(217,119,6,0.08));color:var(--amber)}
+    .h-group-hd .hi.teal{background:linear-gradient(135deg,rgba(13,148,136,0.12),rgba(56,189,248,0.08));color:var(--teal)}
+    .h-group-hd .hi.green{background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(56,189,248,0.06));color:var(--emerald)}
+    .h-group-hd h3{font-size:1.1rem;font-weight:800}
+    .h-list{display:grid;gap:12px}
+    .h-item{
+      background:var(--bg-card);backdrop-filter:blur(12px);
+      border:1px solid var(--border);border-radius:var(--r-sm);
+      padding:18px 24px;display:flex;align-items:flex-start;gap:16px;
+      transition:all .35s var(--ease);font-size:.92rem;color:var(--text-sec);line-height:1.7;
+    }
+    .h-item:hover{box-shadow:var(--shadow);transform:translateX(8px);border-color:var(--teal)}
+    .h-item .n{font-weight:800;color:var(--teal);font-size:.82rem;min-width:22px;flex-shrink:0;margin-top:2px}
+
+    /* ================================================================
+       Projects
+       ================================================================ */
+    .p-card{
+      background:var(--bg-card);backdrop-filter:blur(16px);
+      border:1px solid var(--border);border-radius:var(--r);
+      padding:44px;margin-bottom:32px;
+      transition:all .4s var(--ease);position:relative;overflow:hidden;
+    }
+    .p-card::before{
+      content:'';position:absolute;top:0;left:0;width:4px;height:100%;
+      background:linear-gradient(180deg,var(--teal),var(--amber-accent));
+      border-radius:0 4px 4px 0;opacity:0;transition:opacity .4s;
+    }
+    .p-card:hover{box-shadow:var(--shadow-lg),var(--shadow-glow);transform:translateY(-5px)}
+    .p-card:hover::before{opacity:1}
+    .p-hd{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:20px}
+    .p-hd h3{font-size:1.22rem;font-weight:800;display:flex;align-items:center;gap:12px}
+    .p-hd h3 .pi{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+    .p-hd h3 .pi.green{background:rgba(16,185,129,0.1);color:var(--emerald)}
+    .p-hd h3 .pi.teal{background:rgba(13,148,136,0.1);color:var(--teal)}
+    .p-badges{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .p-role{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(13,148,136,0.08);color:var(--teal);
+      padding:6px 16px;border-radius:var(--r-xs);font-size:.78rem;font-weight:600;
+    }
+    [data-theme="dark"] .p-role{background:rgba(13,148,136,0.12)}
+    .p-time{
+      color:var(--text-muted);font-size:.8rem;font-weight:500;
+      background:var(--bg-alt);padding:6px 16px;border-radius:var(--r-xs);white-space:nowrap;
+    }
+    .p-desc{margin-bottom:18px}
+    .p-desc strong{
+      color:var(--text);font-weight:700;font-size:.9rem;
+      display:flex;align-items:center;gap:8px;
+    }
+    .p-desc strong::before{content:'';width:3px;height:16px;border-radius:2px;background:var(--teal);flex-shrink:0}
+    .p-desc p{color:var(--text-sec);font-size:.92rem;margin-top:8px;line-height:1.85}
+    .p-result{
+      display:flex;align-items:flex-start;gap:12px;
+      background:linear-gradient(135deg,rgba(16,185,129,0.05),rgba(56,189,248,0.03));
+      border:1px solid rgba(16,185,129,0.15);border-radius:var(--r-sm);
+      padding:18px 22px;font-size:.9rem;color:var(--emerald);font-weight:600;line-height:1.7;
+    }
+    [data-theme="dark"] .p-result{background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(56,189,248,0.04));border-color:rgba(16,185,129,0.2)}
+    .p-result i{margin-top:4px;flex-shrink:0}
+
+    /* ================================================================
+       Skills
+       ================================================================ */
+    .sk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+    .sk-card{
+      background:var(--bg-card);backdrop-filter:blur(16px);
+      border:1px solid var(--border);border-radius:var(--r);
+      padding:32px;transition:all .4s var(--ease);position:relative;overflow:hidden;
+    }
+    .sk-card::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--teal),var(--amber-accent));
+      transform:scaleX(0);transition:transform .4s var(--ease);transform-origin:left;
+    }
+    .sk-card:hover{box-shadow:var(--shadow-lg),var(--shadow-glow);transform:translateY(-6px)}
+    .sk-card:hover::before{transform:scaleX(1)}
+    .sk-hd{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+    .sk-hd .sk-ic{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.15rem}
+    .sk-hd .sk-ic.v{background:linear-gradient(135deg,rgba(13,148,136,0.1),rgba(13,148,136,0.06));color:var(--teal)}
+    .sk-hd .sk-ic.b{background:linear-gradient(135deg,rgba(56,189,248,0.1),rgba(13,148,136,0.06));color:var(--sky)}
+    .sk-hd .sk-ic.g{background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(56,189,248,0.06));color:var(--emerald)}
+    .sk-hd .sk-ic.a{background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(217,119,6,0.06));color:var(--amber)}
+    .sk-hd .sk-ic.r{background:linear-gradient(135deg,rgba(217,119,6,0.1),rgba(13,148,136,0.06));color:var(--amber-accent)}
+    .sk-hd h3{font-size:1.05rem;font-weight:800}
+    .sk-card>p{color:var(--text-sec);font-size:.87rem;line-height:1.8}
+    .sk-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .sk-tag{
+      background:var(--bg-alt);color:var(--text-sec);
+      padding:6px 14px;border-radius:var(--r-xs);font-size:.78rem;font-weight:500;
+      transition:all .3s;border:1px solid transparent;
+    }
+    .sk-tag:hover{border-color:var(--teal);color:var(--teal);background:rgba(13,148,136,0.04)}
+
+    /* ================================================================
+       Campus
+       ================================================================ */
+    .camp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .camp-card{
+      background:var(--bg-card);backdrop-filter:blur(16px);
+      border:1px solid var(--border);border-radius:var(--r);
+      padding:36px;transition:all .4s var(--ease);position:relative;overflow:hidden;
+    }
+    .camp-card::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--teal),var(--sky));
+      transform:scaleX(0);transition:transform .4s var(--ease);transform-origin:left;
+    }
+    .camp-card:hover{box-shadow:var(--shadow-lg),var(--shadow-glow);transform:translateY(-6px)}
+    .camp-card:hover::before{transform:scaleX(1)}
+    .camp-card h3{font-size:1.12rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+    .camp-card h3 i{color:var(--teal);font-size:1rem}
+    .camp-card .sub{color:var(--teal);font-size:.84rem;font-weight:600;margin-bottom:14px}
+    .camp-card p{color:var(--text-sec);font-size:.9rem;line-height:1.85}
+
+    /* ================================================================
+       Evaluation
+       ================================================================ */
+    .ev-list{display:grid;gap:14px;max-width:860px;margin:0 auto}
+    .ev-item{
+      display:flex;align-items:flex-start;gap:18px;
+      background:var(--bg-card);backdrop-filter:blur(12px);
+      border:1px solid var(--border);border-radius:var(--r-sm);
+      padding:22px 26px;transition:all .35s var(--ease);
+    }
+    .ev-item:hover{box-shadow:var(--shadow);transform:translateX(8px);border-color:var(--teal)}
+    .ev-item .ei{
+      width:40px;height:40px;border-radius:12px;
+      background:linear-gradient(135deg,rgba(13,148,136,0.08),rgba(217,119,6,0.04));
+      color:var(--teal);display:flex;align-items:center;justify-content:center;
+      font-size:.9rem;flex-shrink:0;margin-top:2px;
+    }
+    [data-theme="dark"] .ev-item .ei{background:linear-gradient(135deg,rgba(13,148,136,0.12),rgba(217,119,6,0.06))}
+    .ev-item p{color:var(--text-sec);font-size:.92rem;line-height:1.8}
+
+    /* ================================================================
+       Contact
+       ================================================================ */
+    .ct-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:780px;margin:0 auto}
+    .ct-card{
+      background:var(--bg-card);backdrop-filter:blur(16px);
+      border:1px solid var(--border);border-radius:var(--r);
+      padding:38px;text-align:center;
+      transition:all .4s var(--ease);position:relative;overflow:hidden;
+    }
+    .ct-card::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--teal),var(--amber-accent));
+      transform:scaleX(0);transition:transform .4s var(--ease);transform-origin:left;
+    }
+    .ct-card:hover{box-shadow:var(--shadow-lg),var(--shadow-glow);transform:translateY(-8px)}
+    .ct-card:hover::before{transform:scaleX(1)}
+    .ct-card .ci{
+      width:60px;height:60px;border-radius:18px;
+      background:linear-gradient(135deg,rgba(13,148,136,0.1),rgba(217,119,6,0.06));
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 18px;font-size:1.5rem;color:var(--teal);
+      transition:transform .4s var(--ease-spring);
+    }
+    .ct-card:hover .ci{transform:scale(1.1) rotate(-5deg)}
+    [data-theme="dark"] .ct-card .ci{background:linear-gradient(135deg,rgba(13,148,136,0.15),rgba(217,119,6,0.08))}
+    .ct-card h3{font-size:.78rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+    .ct-card p{font-size:.97rem;font-weight:700;color:var(--text)}
+
+    /* ================================================================
+       Footer
+       ================================================================ */
+    .footer{
+      text-align:center;padding:48px 32px;
+      border-top:1px solid var(--border);
+      color:var(--text-muted);font-size:.82rem;position:relative;z-index:1;
+    }
+    .footer span{
+      background:linear-gradient(135deg,var(--teal),var(--amber-accent));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;
+    }
+
+    /* ================================================================
+       Scroll Progress Bar
+       ================================================================ */
+    .scroll-progress{
+      position:fixed;top:0;left:0;height:3px;
+      background:linear-gradient(90deg,var(--teal),var(--amber-accent),var(--sky));
+      z-index:1001;width:0;transition:width .1s linear;
+    }
+
+    /* ================================================================
+       Back to Top
+       ================================================================ */
+    .back-top{
+      position:fixed;bottom:32px;right:32px;width:48px;height:48px;
+      border-radius:14px;background:var(--bg-card);backdrop-filter:blur(16px);
+      border:1px solid var(--border);color:var(--teal);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.1rem;cursor:none;z-index:999;
+      opacity:0;transform:translateY(20px);
+      transition:all .4s var(--ease);
+      box-shadow:var(--shadow);
+    }
+    .back-top.show{opacity:1;transform:translateY(0)}
+    .back-top:hover{background:var(--teal);color:#fff;transform:translateY(-4px);box-shadow:0 8px 24px var(--teal-glow)}
+
+    /* ================================================================
+       Print
+       ================================================================ */
+    @media print{
+      .nav,.t-btn,.hero-cta,.scroll-cue,#aurora,.particles,.cursor-dot,.cursor-ring,.scroll-progress,.back-top{display:none!important}
+      .hero{min-height:auto;padding:40px 0;background:#fff!important}
+      .hero h1,.hero-sub,.hero-meta span{color:#000!important;-webkit-text-fill-color:#000!important}
+      .sec{padding:24px 0}
+      body{color:#000;background:#fff}
+      body::before{display:none}
+      .p-card,.sk-card,.h-item,.stat,.edu-card,.camp-card,.ev-item,.ct-card{box-shadow:none;border:1px solid #ddd;break-inside:avoid;backdrop-filter:none}
+    }
+
+    /* ================================================================
+       Responsive
+       ================================================================ */
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .nav-links.open{
+        display:flex;flex-direction:column;
+        position:absolute;top:var(--nav-h);left:0;right:0;
+        background:var(--bg-glass);backdrop-filter:blur(24px);
+        border-bottom:1px solid var(--border);padding:20px 28px;gap:6px;
+      }
+      .mob-btn{display:block}
+      .about-grid{grid-template-columns:1fr;gap:40px}
+      .camp-grid{grid-template-columns:1fr}
+      .hero h1{font-size:2.6rem;letter-spacing:-1.5px}
+      .hero-meta{flex-direction:column;align-items:center;gap:14px}
+      .hero-cta{flex-direction:column;align-items:center}
+      .ct-grid{grid-template-columns:1fr}
+      .p-hd{flex-direction:column}
+      .edu-card{flex-direction:column;gap:24px}
+      .sec{padding:80px 24px}
+      .back-top{bottom:20px;right:20px;width:42px;height:42px}
+    }
+    @media(max-width:480px){
+      .stats{grid-template-columns:1fr}
+      .sec{padding:64px 20px}
+      .sk-grid{grid-template-columns:1fr}
+      .hero h1{font-size:2.2rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Aurora Canvas -->
+<canvas id="aurora"></canvas>
+
+<!-- Floating Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#hero" class="nav-logo"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">关于</a>
+      <a href="#education">教育</a>
+      <a href="#honors">荣誉</a>
+      <a href="#projects">项目</a>
+      <a href="#skills">技能</a>
+      <a href="#campus">校园</a>
+      <a href="#contact">联系</a>
+    </div>
+    <div class="nav-act">
+      <button class="t-btn" id="themeBtn" title="切换主题"><i class="fas fa-moon"></i></button>
+      <button class="mob-btn" id="mobBtn"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-inner">
+    <div class="hero-pill"><span class="live"></span> Open to Work</div>
+    <h1>你好，我是<span class="aurora">曹志</span></h1>
+    <p class="hero-sub">AI 应用开发 &middot; AI 产品经理 &middot; 南京工业大学浦江学院 2026 届</p>
+    <div class="hero-meta">
+      <span><i class="fas fa-graduation-cap"></i> 计算机科学与技术 &middot; 本科</span>
+      <span><i class="fas fa-star"></i> GPA 3.6</span>
+      <span><i class="fas fa-calendar-alt"></i> 2022.09 - 2026.06</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-fill"><i class="fas fa-paper-plane"></i> 联系我</a>
+      <a href="#projects" class="btn btn-line"><i class="fas fa-code"></i> 查看项目</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- About -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag"><i class="fas fa-user"></i> About Me</div>
+      <h2>关于我</h2>
+      <p>热爱技术，积极探索 AI 与产品创新的融合</p>
+      <div class="line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>学习态度积极，成绩优良，连续三年获得国家励志奖学金与校级三好学生。</p>
+        <p>热爱技术，喜欢探索新技术，关注 AI 的发展，对 AI Agent、大模型有浓厚的兴趣。熟练使用 Claude Code、Codex、OpenCode 等 Agent 进行 Vibe Coding 开发，熟练使用 Coze / Dify / n8n 等 AI 工作流平台。</p>
+        <p>具备良好的文档写作能力，喜欢写博客。具备良好的英语听说读写能力。肯于吃苦，工作积极乐观，有着良好抗压能力与独立分析、故障排查能力。</p>
+      </div>
+      <div class="stats reveal reveal-d1">
+        <div class="stat"><div class="stat-n">3.6</div><div class="stat-l">GPA</div></div>
+        <div class="stat"><div class="stat-n">3</div><div class="stat-l">年国家励志奖学金</div></div>
+        <div class="stat"><div class="stat-n">2</div><div class="stat-l">个实战项目</div></div>
+        <div class="stat"><div class="stat-n">5+</div><div class="stat-l">项省级以上荣誉</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section class="sec sec-alt" id="education">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag"><i class="fas fa-graduation-cap"></i> Education</div>
+      <h2>教育经历</h2>
+      <p>扎实的计算机专业基础</p>
+      <div class="line"></div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-ic"><i class="fas fa-university"></i></div>
+      <div class="edu-body">
+        <h3>南京工业大学浦江学院</h3>
+        <div class="mj">计算机科学与技术 &middot; 本科</div>
+        <div class="tm"><i class="fas fa-calendar-alt"></i> 2022.09 - 2026.06</div>
+        <div class="gpa-badge"><i class="fas fa-chart-line"></i> 平均学分绩点 (GPA)：3.6</div>
+        <div class="crs">
+          <h4>主修课程</h4>
+          <div class="crs-tags">
+            <span class="crs-t">数据结构</span>
+            <span class="crs-t">计算机组成原理</span>
+            <span class="crs-t">Java程序设计</span>
+            <span class="crs-t">数据库原理与应用</span>
+            <span class="crs-t">操作系统</span>
+            <span class="crs-t">JavaEE企业级应用开发</span>
+            <span class="crs-t">微信小程序开发</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Honors -->
+<section class="sec" id="honors">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag"><i class="fas fa-trophy"></i> Honors</div>
+      <h2>荣誉证书</h2>
+      <p>竞赛与学术荣誉</p>
+      <div class="line"></div>
+    </div>
+    <div class="h-group reveal">
+      <div class="h-group-hd"><div class="hi gold"><i class="fas fa-crown"></i></div><h3>国家级</h3></div>
+      <div class="h-list">
+        <div class="h-item"><span class="n">1.</span>连续三年获"国家励志奖学金"</div>
+        <div class="h-item"><span class="n">2.</span>第十一届全国大学生数字媒体科技作品及创意竞赛 国赛三等奖</div>
+      </div>
+    </div>
+    <div class="h-group reveal reveal-d1">
+      <div class="h-group-hd"><div class="hi teal"><i class="fas fa-medal"></i></div><h3>省级</h3></div>
+      <div class="h-list">
+        <div class="h-item"><span class="n">1.</span>蓝桥杯 Java 软件开发 江苏省二等奖</div>
+        <div class="h-item"><span class="n">2.</span>第十一届全国大学生数字媒体科技作品及创意竞赛 江苏省二等奖</div>
+        <div class="h-item"><span class="n">3.</span>全国大学生数学建模大赛 江苏省三等奖</div>
+        <div class="h-item"><span class="n">4.</span>"领航杯"江苏省大学生信息技术应用能力比赛暨人工智能大赛 三等奖</div>
+        <div class="h-item"><span class="n">5.</span>全国大学生软件测试大赛 省赛优胜奖</div>
+      </div>
+    </div>
+    <div class="h-group reveal reveal-d2">
+      <div class="h-group-hd"><div class="hi green"><i class="fas fa-award"></i></div><h3>校级</h3></div>
+      <div class="h-list">
+        <div class="h-item"><span class="n">1.</span>连续三年获得校级"三好学生"</div>
+        <div class="h-item"><span class="n">2.</span>连续两年获得校级"二等奖学金"、一次"三等奖学金"</div>
+        <div class="h-item"><span class="n">3.</span>校级"优秀寝室长"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="sec sec-alt" id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag"><i class="fas fa-rocket"></i> Projects</div>
+      <h2>项目经历</h2>
+      <p>从需求分析到系统交付的完整实践</p>
+      <div class="line"></div>
+    </div>
+    <div class="p-card reveal">
+      <div class="p-hd">
+        <h3><span class="pi green"><i class="fas fa-seedling"></i></span>基于 YOLOv8 的智慧果园检测系统</h3>
+        <div class="p-badges">
+          <span class="p-role"><i class="fas fa-user-cog"></i> 核心开发人员</span>
+          <span class="p-time"><i class="fas fa-clock"></i> 2024.04 - 2024.06</span>
+        </div>
+      </div>
+      <div class="p-desc"><strong>项目概述</strong><p>开发基于 YOLOv8 的智慧果园检测系统，旨在通过实时监测果树的病虫害，提高果园管理效率。</p></div>
+      <div class="p-desc"><strong>核心职责</strong><p>使用 AI 编写 Python 脚本，对数据进行清洗、图像标注、环境部署、模型训练与测试及系统集成，确保系统能够准确识别多种果树病虫害，并及时预警，完成软著的编写。</p></div>
+      <div class="p-result"><i class="fas fa-check-circle"></i><span>获得省级大创资格 &middot; 申请到一项软件著作权 &middot; 一篇论文（知网收录）</span></div>
+    </div>
+    <div class="p-card reveal reveal-d1">
+      <div class="p-hd">
+        <h3><span class="pi teal"><i class="fas fa-box-open"></i></span>基于 SSM 的救灾物资管理系统</h3>
+        <div class="p-badges">
+          <span class="p-role"><i class="fas fa-user-cog"></i> 核心开发人员</span>
+          <span class="p-time"><i class="fas fa-clock"></i> 2023.11 - 2023.12</span>
+        </div>
+      </div>
+      <div class="p-desc"><strong>项目概述</strong><p>开发基于 SSM 框架的救灾物资管理系统，旨在优化救灾物资管理流程，提高物资管理效率和用户体验。</p></div>
+      <div class="p-desc"><strong>核心职责</strong><p>负责系统需求分析、功能设计与实现。具体工作包括使用 AI 设计系统功能，物资信息检索功能实现、技术文档的编写，使用 AI 进行前端页面的美化。</p></div>
+      <div class="p-result"><i class="fas fa-check-circle"></i><span>获得"领航杯"省级三等奖 &middot; 全校六支队伍参赛，唯一获奖</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="sec" id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag"><i class="fas fa-cogs"></i> Skills</div>
+      <h2>职业技能</h2>
+      <p>全栈技术能力与 AI 工程实践</p>
+      <div class="line"></div>
+    </div>
+    <div class="sk-grid">
+      <div class="sk-card reveal"><div class="sk-hd"><div class="sk-ic v"><i class="fas fa-laptop-code"></i></div><h3>计算机基础</h3></div><p>熟练掌握计算机网络、操作系统、数据结构和算法、计算机组成原理</p></div>
+      <div class="sk-card reveal reveal-d1"><div class="sk-hd"><div class="sk-ic b"><i class="fab fa-java"></i></div><h3>Java</h3></div><p>熟练使用 Java 基础知识、集合、泛型</p><div class="sk-tags"><span class="sk-tag">Java</span><span class="sk-tag">集合框架</span><span class="sk-tag">泛型</span></div></div>
+      <div class="sk-card reveal reveal-d2"><div class="sk-hd"><div class="sk-ic g"><i class="fab fa-python"></i></div><h3>Python</h3></div><p>熟悉 Python，熟悉 NumPy、Pandas 第三方类库，了解 PyTorch / TensorFlow，写过简单的 Python 脚本</p><div class="sk-tags"><span class="sk-tag">Python</span><span class="sk-tag">NumPy</span><span class="sk-tag">Pandas</span><span class="sk-tag">PyTorch</span><span class="sk-tag">TensorFlow</span></div></div>
+      <div class="sk-card reveal reveal-d3"><div class="sk-hd"><div class="sk-ic a"><i class="fas fa-layer-group"></i></div><h3>开发框架</h3></div><p>熟悉 Spring、SpringBoot、MyBatis 等主流 Java 开发框架，了解主流 AI 框架 (LangChain)</p><div class="sk-tags"><span class="sk-tag">Spring</span><span class="sk-tag">SpringBoot</span><span class="sk-tag">MyBatis</span><span class="sk-tag">LangChain</span></div></div>
+      <div class="sk-card reveal reveal-d4"><div class="sk-hd"><div class="sk-ic r"><i class="fas fa-database"></i></div><h3>数据库与中间件</h3></div><p>熟练使用 MySQL 数据库，了解 NoSQL，对图数据库 Neo4j 有基本了解</p><div class="sk-tags"><span class="sk-tag">MySQL</span><span class="sk-tag">NoSQL</span><span class="sk-tag">Neo4j</span></div></div>
+      <div class="sk-card reveal reveal-d5"><div class="sk-hd"><div class="sk-ic b"><i class="fas fa-tools"></i></div><h3>工具与运维</h3></div><p>熟练掌握 Git、Maven、Docker 容器，熟悉 Selenium 自动化测试工具，了解 JMeter 压力测试工具，熟练使用 Linux 部署项目</p><div class="sk-tags"><span class="sk-tag">Git</span><span class="sk-tag">Maven</span><span class="sk-tag">Docker</span><span class="sk-tag">Linux</span><span class="sk-tag">Selenium</span><span class="sk-tag">JMeter</span></div></div>
+      <div class="sk-card reveal reveal-d6"><div class="sk-hd"><div class="sk-ic v"><i class="fas fa-robot"></i></div><h3>AI 工程</h3></div><p>熟练使用 Claude Code、Codex、OpenCode 等 Agent 进行 Vibe Coding 开发；熟练使用 Coze / Dify / n8n 等 AI 工作流平台；掌握 Prompt 工程方法，有 RAG 搭建智能客服经验，有阿里云使用经验</p><div class="sk-tags"><span class="sk-tag">Claude Code</span><span class="sk-tag">Codex</span><span class="sk-tag">Coze</span><span class="sk-tag">Dify</span><span class="sk-tag">n8n</span><span class="sk-tag">RAG</span><span class="sk-tag">Prompt Engineering</span><span class="sk-tag">阿里云</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Campus -->
+<section class="sec sec-alt" id="campus">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag"><i class="fas fa-users"></i> Campus Life</div>
+      <h2>校园经历</h2>
+      <p>竞赛历练与学生工作</p>
+      <div class="line"></div>
+    </div>
+    <div class="camp-grid">
+      <div class="camp-card reveal">
+        <h3><i class="fas fa-code"></i> 参加蓝桥杯</h3>
+        <div class="sub">Java 方向</div>
+        <p>作为 Java 方向的参赛者，熟悉 Java 数据结构，通过刷力扣系统性训练提升了编程能力和问题解决技巧。在蓝桥杯全国软件和信息技术专业人才大赛中荣获省级二等奖。</p>
+      </div>
+      <div class="camp-card reveal reveal-d1">
+        <h3><i class="fas fa-home"></i> 寝室长</h3>
+        <div class="sub">校级"优秀寝室长"</div>
+        <p>建立标准化内务管理体系，制定值日排班表和卫生检查制度，带领 4 人寝室获评校级"优秀寝室"，获"优秀寝室长"称号。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Evaluation -->
+<section class="sec" id="evaluation">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag"><i class="fas fa-heart"></i> Self-Evaluation</div>
+      <h2>自我评价</h2>
+      <p>技术热情与职业素养</p>
+      <div class="line"></div>
+    </div>
+    <div class="ev-list">
+      <div class="ev-item reveal"><div class="ei"><i class="fas fa-book-open"></i></div><p>学习态度积极，成绩优良，连续三年获国家励志奖学金</p></div>
+      <div class="ev-item reveal reveal-d1"><div class="ei"><i class="fas fa-fire"></i></div><p>热爱技术，喜欢探索新技术，关注 AI 的发展，对 AI Agent、大模型有浓厚的兴趣</p></div>
+      <div class="ev-item reveal reveal-d2"><div class="ei"><i class="fab fa-github"></i></div><p>密切关注 GitHub (github.com/Cherzing)，有项目开源贡献</p></div>
+      <div class="ev-item reveal reveal-d3"><div class="ei"><i class="fas fa-pen-fancy"></i></div><p>具备良好的文档写作能力，喜欢写博客</p></div>
+      <div class="ev-item reveal reveal-d4"><div class="ei"><i class="fas fa-dumbbell"></i></div><p>肯于吃苦，工作积极乐观，有着良好抗压能力</p></div>
+      <div class="ev-item reveal reveal-d5"><div class="ei"><i class="fas fa-search"></i></div><p>良好的独立分析、故障排查和解决问题能力，并能关注细节</p></div>
+      <div class="ev-item reveal reveal-d6"><div class="ei"><i class="fas fa-terminal"></i></div><p>熟练使用 Cursor、灵码、TRAE 进行 AI 软件开发</p></div>
+      <div class="ev-item reveal reveal-d7"><div class="ei"><i class="fas fa-language"></i></div><p>具备良好的英语听说读写能力</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="sec sec-alt" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag"><i class="fas fa-envelope"></i> Contact</div>
+      <h2>联系方式</h2>
+      <p>期待与您交流</p>
+      <div class="line"></div>
+    </div>
+    <div class="ct-grid reveal">
+      <div class="ct-card"><div class="ci"><i class="fab fa-github"></i></div><h3>GitHub</h3><p>github.com/Cherzing</p></div>
+      <div class="ct-card"><div class="ci"><i class="fas fa-map-marker-alt"></i></div><h3>所在地</h3><p>南京</p></div>
+      <div class="ct-card"><div class="ci"><i class="fas fa-graduation-cap"></i></div><h3>毕业院校</h3><p>南京工业大学浦江学院</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2025 <span>曹志</span> &middot; AI 应用开发 / AI 产品经理</p>
+</footer>
+
+<!-- Back to Top -->
+<a href="#hero" class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></a>
+
+<!-- JavaScript -->
+<script>
+/* ===== Custom Cursor ===== */
+(function(){
+  const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
+  if(!dot||!ring||matchMedia('(max-width:768px)').matches)return;
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+  function animateRing(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing)}
+  animateRing();
+  document.querySelectorAll('a,button,.btn,.stat,.h-item,.sk-card,.camp-card,.ev-item,.ct-card,.p-card,.edu-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+  });
+})();
+
+/* ===== Floating Particles ===== */
+(function(){
+  const container=document.getElementById('particles');
+  if(!container)return;
+  const colors=['rgba(13,148,136,0.3)','rgba(56,189,248,0.25)','rgba(217,119,6,0.2)','rgba(52,211,153,0.2)'];
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const size=Math.random()*4+2;
+    p.style.cssText=`width:${size}px;height:${size}px;background:${colors[i%colors.length]};left:${Math.random()*100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*-20}s;opacity:${Math.random()*0.4+0.1}`;
+    container.appendChild(p);
+  }
+})();
+
+/* ===== Aurora Mesh ===== */
+(function(){
+  const c=document.getElementById('aurora'),ctx=c.getContext('2d');
+  let w,h,t=0;
+  function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
+  resize();addEventListener('resize',resize);
+  const colors=[
+    {r:13,g:148,b:136},{r:56,g:189,b:248},{r:217,g:119,b:6},{r:52,g:211,b:153}
+  ];
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    t+=.002;
+    for(let i=0;i<colors.length;i++){
+      const col=colors[i];
+      const cx=w*.5+Math.sin(t+i*1.8)*w*.4;
+      const cy=h*.5+Math.cos(t*.6+i*2.2)*h*.4;
+      const r=Math.min(w,h)*(.28+Math.sin(t*.4+i)*.1);
+      const g=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+      g.addColorStop(0,`rgba(${col.r},${col.g},${col.b},.1)`);
+      g.addColorStop(1,`rgba(${col.r},${col.g},${col.b},0)`);
+      ctx.fillStyle=g;
+      ctx.fillRect(0,0,w,h);
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ===== Theme ===== */
+const tBtn=document.getElementById('themeBtn'),tIc=tBtn.querySelector('i');
+const saved=localStorage.getItem('theme')||'dark';
+document.documentElement.setAttribute('data-theme',saved);
+tIc.className=saved==='dark'?'fas fa-sun':'fas fa-moon';
+tBtn.addEventListener('click',()=>{
+  const d=document.documentElement.getAttribute('data-theme')==='dark';
+  const n=d?'light':'dark';
+  document.documentElement.setAttribute('data-theme',n);
+  localStorage.setItem('theme',n);
+  tIc.className=n==='dark'?'fas fa-sun':'fas fa-moon';
+});
+
+/* ===== Mobile ===== */
+const mBtn=document.getElementById('mobBtn'),nL=document.getElementById('navLinks');
+mBtn.addEventListener('click',()=>{
+  nL.classList.toggle('open');
+  mBtn.querySelector('i').className=nL.classList.contains('open')?'fas fa-times':'fas fa-bars';
+});
+nL.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  nL.classList.remove('open');mBtn.querySelector('i').className='fas fa-bars';
+}));
+
+/* ===== Nav ===== */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+
+/* ===== Active Nav ===== */
+const secs=document.querySelectorAll('section[id]'),nAs=document.querySelectorAll('.nav-links a');
+function upNav(){let c='';secs.forEach(s=>{if(scrollY>=s.offsetTop-130)c=s.id});nAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c))}
+addEventListener('scroll',upNav);
+
+/* ===== Reveal ===== */
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ===== Scroll Progress ===== */
+const progressBar=document.getElementById('scrollProgress');
+addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-innerHeight;
+  progressBar.style.width=(scrollY/h*100)+'%';
+});
+
+/* ===== Back to Top ===== */
+const backTop=document.getElementById('backTop');
+addEventListener('scroll',()=>backTop.classList.toggle('show',scrollY>600));
+</script>
+</body>
+</html>
